@@ -11,7 +11,7 @@ class Game extends Model
     
     public $timestamps = false;
 
-    public function Steam() {
-        return $this->hasMany('App\Steam');
+    public function stream() {
+        return $this->hasMany('App\Stream', 'game_id');
     }
 }
