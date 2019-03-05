@@ -51,7 +51,7 @@ class SaveGameInfo extends Command
             if($response->getStatusCode() == 200) {
 
                 $game = Game::where('twitch_game_id', Config::get('twitch.GAME_ID'))->first();
-                // If game exist use to update otherwise add new game
+                // If game exists use it to update streams, otherwise add the new game
                 if(!$game) {
                     $game = new Game;
                     $game->twitch_game_id = Config::get('twitch.GAME_ID');
