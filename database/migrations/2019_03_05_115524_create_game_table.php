@@ -15,7 +15,7 @@ class CreateGameTable extends Migration
     {
         Schema::create('game', function (Blueprint $table) {
             $table->bigIncrements('game_id');
-            $table->bigInteger('twitch_game_id');
+            $table->integer('twitch_game_id');
         });
     }
 
