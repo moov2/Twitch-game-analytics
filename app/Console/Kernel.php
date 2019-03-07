@@ -24,8 +24,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('save:gameinfo')
+        $schedule->command('save:streamsinfo')
                  ->everyFiveMinutes();
+
+        $schedule->command('save:topgames')
+                 ->hourly();
     }
 
     /**

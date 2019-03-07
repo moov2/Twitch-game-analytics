@@ -8,21 +8,21 @@ use Config as Config;
 use \App\Game;
 use \App\Stream;
 
-class SaveGameInfo extends Command
+class SaveStreamsInfo extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'save:gameinfo';
+    protected $signature = 'save:streamsinfo';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Retrieve and save information for specific game id';
+    protected $description = 'Retrieve and save streams info for specific game id';
 
     /**
      * Create a new command instance.
