@@ -10678,6 +10678,9 @@ a.text-dark:focus {
 .list-group-item {
   font-weight: bold;
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .list-group-item .badge {

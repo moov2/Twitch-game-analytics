@@ -26,7 +26,7 @@
                     <ul class="list-group list-group-flush">
                         @if(isset($topStreams))
                         @foreach ($topStreams as $stream)
-                        <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{number_format($stream->sum)}}</span></li>
+                        <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank" title="{{$stream->user_name}}">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{number_format($stream->sum)}}</span></li>
                         @endforeach
                         @else
                         <li class="list-group-item">No data found.</li>
@@ -42,7 +42,7 @@
                     <ul class="list-group list-group-flush">
                         @if(isset($peakStreams))
                             @foreach ($peakStreams as $stream)
-                            <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{number_format($stream->sum)}}</span></li>
+                            <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank" title="{{$stream->user_name}}">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{number_format($stream->sum)}}</span></li>
                             @endforeach
                         @else
                         <li class="list-group-item">No data found.</li>
@@ -58,7 +58,7 @@
                     <ul class="list-group list-group-flush">
                         @if(isset($longestStreams))
                             @foreach ($longestStreams as $stream)
-                            <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{gmdate("H", $stream->date_diff)}} hours</span></li>
+                            <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank" title="{{$stream->user_name}}">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{gmdate("H", $stream->date_diff)}} hours</span></li>
                             @endforeach
                         @else
                         <li class="list-group-item">No data found.</li>
@@ -80,7 +80,7 @@
                                 <?php endif; ?>
                                 
                                 @foreach ($games as $game)
-                                    <li class="list-group-item {{isset($game->isCurrentGame) ? 'is-current-game' : ''}}"><span class="badge {{isset($game->isCurrentGame) ? 'badge-danger' : 'badge-info'}}">{{$game->top_game_id}}</span> {{$game->name}}</li>
+                                    <li class="list-group-item {{isset($game->isCurrentGame) ? 'is-current-game' : ''}}" title="{{$game->name}}"><span class="badge {{isset($game->isCurrentGame) ? 'badge-danger' : 'badge-info'}}">{{$game->top_game_id}}</span> {{$game->name}}</li>
                                 @endforeach
                             <?php $sets++ ?>
                             @endforeach
