@@ -12,7 +12,7 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse">
-            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> Call of Duty: Black Ops 4
+            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> <span class="game-name float-right">{{$currentGame->name}} <a href="{{preg_replace_array('/\{width\}|\{height\}+/', ['1400', '1550'], $currentGame->box_art_url)}}" target="_blank"><img class="game-cover" src="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}"/></a></span>
         </nav>
 
         <div class="container-fluid mt-3">

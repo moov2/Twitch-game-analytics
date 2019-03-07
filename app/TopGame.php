@@ -41,4 +41,8 @@ class TopGame extends Model
 
         return [$firstSubset, $secondSubset];
     }
+
+    public function currentGame() {
+        return $this->where('game_id', Config::get('twitch.GAME_ID'))->first();
+    }
 }

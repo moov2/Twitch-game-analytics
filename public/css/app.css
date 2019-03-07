@@ -10659,6 +10659,17 @@ a.text-dark:focus {
   background: #fc1f7d;
 }
 
+.game-name {
+  padding-right: 50px;
+}
+
+.game-name .game-cover {
+  max-height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .navbar {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
