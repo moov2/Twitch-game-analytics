@@ -12,7 +12,7 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse">
-            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> @if(isset($currentGame->box_art_url)) <span class="game-name float-right">{{$currentGame->name ?? ''}} <a href="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}" target="_blank"><img class="game-cover" src="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}"/></a></span>@endif
+            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> @if(isset($currentGame->box_art_url)) <span class="game-name float-right">{{$currentGame->name ?? ''}} <a href="{{str_replace('-{width}x{height}', '', $currentGame->box_art_url)}}" class="modal-btn" data-toggle="modal" data-target="#modal"><img class="game-cover" src="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}"/></a></span>@endif
         </nav>
 
         <div class="container-fluid mt-5">
