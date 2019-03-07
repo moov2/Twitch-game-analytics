@@ -12,7 +12,7 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse">
-            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> @if(isset($currentGame->box_art_url)) <span class="game-name float-right">{{$currentGame->name ?? ''}} <a href="{{preg_replace_array('/\{width\}|\{height\}+/', ['1400', '1550'], $currentGame->box_art_url)}}" target="_blank"><img class="game-cover" src="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}"/></a></span>@endif
+            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> @if(isset($currentGame->box_art_url)) <span class="game-name float-right">{{$currentGame->name ?? ''}} <a href="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}" target="_blank"><img class="game-cover" src="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}"/></a></span>@endif
         </nav>
 
         <div class="container-fluid mt-5">
@@ -80,7 +80,7 @@
                                 <?php endif; ?>
                                 
                                 @foreach ($games as $game)
-                                    <li class="list-group-item {{isset($game->isCurrentGame) ? 'is-current-game' : ''}}" title="{{$game->name}}"><span class="badge {{isset($game->isCurrentGame) ? 'badge-danger' : 'badge-info'}}">{{$game->top_game_id}}</span> {{$game->name}}</li>
+                                    <li class="list-group-item {{isset($game->isCurrentGame) ? 'is-current-game' : ''}}" title="{{$game->name}}"><span class="badge {{isset($game->isCurrentGame) ? 'badge-danger' : 'badge-info'}}">{{$game->top_game_id}}</span> <a href="{{str_replace('-{width}x{height}', '', $game->box_art_url)}}" class="modal-btn" data-toggle="modal" data-target="#modal">{{$game->name}}</a></li>
                                 @endforeach
                             <?php $sets++ ?>
                             @endforeach
@@ -96,5 +96,21 @@
         <footer class="container-fluid mt-5 mb-5">
             <p class="text-center">A project by <a href="https://etchplay.com">Etch Play</a></p>
         </footer>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/js/app.js"></script>
     </body>
 </html>

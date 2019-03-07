@@ -50,3 +50,9 @@
   font-weight: bold;
   color: $red;
 }
+
+.modal-body {
+  img {
+    max-width: 100%;
+  }
+}
