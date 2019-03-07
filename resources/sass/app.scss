@@ -16,9 +16,9 @@
 
 .list-group-item {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
   
-  .badge-info {
+  .badge {
     font-size: 16px;
     color: #fff;
   }
@@ -26,4 +26,9 @@
   a {
     color: #212529;
   }
+}
+
+.is-current-game {
+  font-weight: bold;
+  color: $red;
 }

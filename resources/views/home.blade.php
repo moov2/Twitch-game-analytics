@@ -16,7 +16,7 @@
         </nav>
 
         <div class="container-fluid mt-3">
-            <div class="row">
+            <div class="row card-group">
 
                 <div class="card col-lg-3">
                     <div class="card-body">
@@ -56,13 +56,21 @@
 
                 <div class="card col-lg-3">
                     <div class="card-body">
-                        <h5 class="card-title">Top streams of the week</h5>
-                        <p class="card-text">Top streams of the week, based on peak viewers.</p>
+                        <h5 class="card-title">Top Games</h5>
+                        <p class="card-text">Top Games based on current viewers on Twitch.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <?php $sets = 0 ?>
+                        @foreach ($topGames as $games)
+                            <?php if($sets == 1): ?>
+                                <li class="list-group-item text-center">...</li>
+                            <?php endif; ?>
+                            
+                            @foreach ($games as $game)
+                                <li class="list-group-item {{isset($game->isCurrentGame) ? 'is-current-game' : ''}}"><span class="badge {{isset($game->isCurrentGame) ? 'badge-danger' : 'badge-info'}}">{{$game->top_game_id}}</span> {{$game->name}}</li>
+                            @endforeach
+                        <?php $sets++ ?>
+                        @endforeach
                     </ul>
                 </div>
 
