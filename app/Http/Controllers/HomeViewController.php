@@ -21,6 +21,10 @@ class HomeViewController extends Controller
             }
         } else {
             $game = Game::first();
+
+            if(!$game) {
+                return abort(404);
+            }
         }
         $topGame = new TopGame();
         $data['currentGame'] = $topGame->currentGame($game->twitch_game_id);
