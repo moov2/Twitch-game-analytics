@@ -15,7 +15,7 @@
             <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> @if(isset($currentGame->box_art_url)) <span class="game-name float-right">{{$currentGame->name ?? ''}} <a href="{{preg_replace_array('/\{width\}|\{height\}+/', ['1400', '1550'], $currentGame->box_art_url)}}" target="_blank"><img class="game-cover" src="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}"/></a></span>@endif
         </nav>
 
-        <div class="container-fluid mt-3">
+        <div class="container-fluid mt-5">
             <div class="row card-group">
 
                 <div class="card col-lg-3">
@@ -92,5 +92,9 @@
 
             </div>
         </div>
+
+        <footer class="container-fluid mt-5 mb-5">
+            <p class="text-center">A project by <a href="https://etchplay.com">Etch Play</a></p>
+        </footer>
     </body>
 </html>
