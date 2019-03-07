@@ -17,8 +17,13 @@
 .list-group-item {
   font-weight: bold;
   font-size: 16px;
+  
   .badge-info {
     font-size: 16px;
     color: #fff;
+  }
+
+  a {
+    color: #212529;
   }
 }

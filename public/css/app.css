@@ -10670,3 +10670,7 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.list-group-item a {
+  color: #212529;
+}
+
