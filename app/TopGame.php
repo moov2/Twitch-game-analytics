@@ -13,7 +13,7 @@ class TopGame extends Model
     protected $table = 'top_game';
     protected $primaryKey = 'top_game_id';
 
-    public function highlighted() {
+    public function highlighted($twitch_game_id) {
 
         $games = $this->all();
 
@@ -27,7 +27,7 @@ class TopGame extends Model
         // First we get the current position and the current game object
         foreach($games as $key => $game) {
             $currentGamePosition++;
-            if($game->game_id == Config::get('twitch.GAME_ID')) {
+            if($game->game_id == $twitch_game_id) {
                 $currentGame = $game;
                 $games[$key]->isCurrentGame = true;
                 break;
@@ -46,7 +46,7 @@ class TopGame extends Model
         return [$firstSubset, $secondSubset];
     }
 
-    public function currentGame() {
-        return $this->where('game_id', Config::get('twitch.GAME_ID'))->first();
+    public function currentGame($twitch_game_id) {
+        return $this->where('game_id', $twitch_game_id)->first();
     }
 }

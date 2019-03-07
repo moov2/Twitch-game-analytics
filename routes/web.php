@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'HomeViewController@home');
+Route::get('/{game_id?}', 'HomeViewController@home');
