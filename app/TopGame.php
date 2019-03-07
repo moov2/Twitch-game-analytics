@@ -20,6 +20,10 @@ class TopGame extends Model
         $currentGamePosition = 0;
         $currentGame = null;
 
+        if($games->isEmpty()) {
+            return null;
+        }
+
         // First we get the current position and the current game object
         foreach($games as $key => $game) {
             $currentGamePosition++;

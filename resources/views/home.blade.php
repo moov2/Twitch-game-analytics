@@ -12,7 +12,7 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse">
-            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> <span class="game-name float-right">{{$currentGame->name}} <a href="{{preg_replace_array('/\{width\}|\{height\}+/', ['1400', '1550'], $currentGame->box_art_url)}}" target="_blank"><img class="game-cover" src="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}"/></a></span>
+            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> @if(isset($currentGame->box_art_url)) <span class="game-name float-right">{{$currentGame->name ?? ''}} <a href="{{preg_replace_array('/\{width\}|\{height\}+/', ['1400', '1550'], $currentGame->box_art_url)}}" target="_blank"><img class="game-cover" src="{{preg_replace_array('/\{width\}|\{height\}+/', ['400', '550'], $currentGame->box_art_url)}}"/></a></span>@endif
         </nav>
 
         <div class="container-fluid mt-3">
@@ -24,9 +24,13 @@
                         <p class="card-text">Top streams of last 7 days, based on sum viewers.</p>
                     </div>
                     <ul class="list-group list-group-flush">
+                        @if(isset($topStreams))
                         @foreach ($topStreams as $stream)
                         <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{number_format($stream->sum)}}</span></li>
                         @endforeach
+                        @else
+                        <li class="list-group-item">No data found.</li>
+                        @endif
                     </ul>
                 </div>
 
@@ -36,9 +40,13 @@
                         <p class="card-text">Peak viewers of last 7 days, based on peak viewers.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        @foreach ($peakStreams as $stream)
-                        <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{number_format($stream->sum)}}</span></li>
-                        @endforeach
+                        @if(isset($peakStreams))
+                            @foreach ($peakStreams as $stream)
+                            <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{number_format($stream->sum)}}</span></li>
+                            @endforeach
+                        @else
+                        <li class="list-group-item">No data found.</li>
+                        @endif
                     </ul>
                 </div>
 
@@ -48,9 +56,13 @@
                         <p class="card-text">Longest streams of all the time.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        @foreach ($longestStreams as $stream)
-                        <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{gmdate("H", $stream->date_diff)}} hours</span></li>
-                        @endforeach
+                        @if(isset($longestStreams))
+                            @foreach ($longestStreams as $stream)
+                            <li class="list-group-item"><a href="https://twitch.tv/{{$stream->user_name}}" target="_blank">{{$stream->user_name}}</a> <span class="badge badge-info float-right">{{gmdate("H", $stream->date_diff)}} hours</span></li>
+                            @endforeach
+                        @else
+                        <li class="list-group-item">No data found.</li>
+                        @endif
                     </ul>
                 </div>
 
@@ -61,16 +73,20 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <?php $sets = 0 ?>
-                        @foreach ($topGames as $games)
-                            <?php if($sets == 1): ?>
-                                <li class="list-group-item text-center">...</li>
-                            <?php endif; ?>
-                            
-                            @foreach ($games as $game)
-                                <li class="list-group-item {{isset($game->isCurrentGame) ? 'is-current-game' : ''}}"><span class="badge {{isset($game->isCurrentGame) ? 'badge-danger' : 'badge-info'}}">{{$game->top_game_id}}</span> {{$game->name}}</li>
+                        @if(isset($topGames))
+                            @foreach ($topGames as $games)
+                                <?php if($sets == 1): ?>
+                                    <li class="list-group-item text-center">...</li>
+                                <?php endif; ?>
+                                
+                                @foreach ($games as $game)
+                                    <li class="list-group-item {{isset($game->isCurrentGame) ? 'is-current-game' : ''}}"><span class="badge {{isset($game->isCurrentGame) ? 'badge-danger' : 'badge-info'}}">{{$game->top_game_id}}</span> {{$game->name}}</li>
+                                @endforeach
+                            <?php $sets++ ?>
                             @endforeach
-                        <?php $sets++ ?>
-                        @endforeach
+                        @else
+                        <li class="list-group-item">No data found.</li>
+                        @endif
                     </ul>
                 </div>
 

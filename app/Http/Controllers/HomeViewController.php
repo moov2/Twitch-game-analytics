@@ -16,11 +16,11 @@ class HomeViewController extends Controller
         $game = Game::Where('twitch_game_id', Config::get('twitch.GAME_ID'))->first();
         $topGame = new TopGame();
         $data['currentGame'] = $topGame->currentGame();
-        $data['topStreams'] = $game->topStreams();
-        $data['longestStreams'] = $game->longestStreams();
-        $data['peakStreams'] = $game->peakStreams();
-        $data['topGames'] = $topGame->highlighted();
-        
+        $data['topStreams'] = $game ? $game->topStreams() : null;
+        $data['longestStreams'] = $game ? $game->longestStreams() : null;
+        $data['peakStreams'] = $game ? $game->peakStreams() : null;
+        $data['topGames'] = $topGame ? $topGame->highlighted() : null;
+
         return view('home')->with($data);
     }
 }
