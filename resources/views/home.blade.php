@@ -12,7 +12,7 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse">
-            <h3>Twitch Game Analytics <span class="badge badge-danger">by Etch Play</span></h3> Call of Duty: Black Ops 4
+            <h3>Twitch Game Analytics <span class="badge badge-danger etch-play">by Etch Play</span></h3> Call of Duty: Black Ops 4
         </nav>
 
         <div class="container-fluid mt-3">
