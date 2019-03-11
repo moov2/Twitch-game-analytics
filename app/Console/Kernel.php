@@ -29,6 +29,10 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('save:topgames')
                  ->hourly();
+
+    
+        $schedule->command('delete:streamsinfo')
+                 ->daily();
     }
 
     /**
